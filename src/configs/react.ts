@@ -1,6 +1,5 @@
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
-import reactCompiler from 'eslint-plugin-react-compiler'
 import reactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -11,12 +10,9 @@ export const reactConfig = tseslint.config(
   ...baseConfig,
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
+  reactHooks.configs['recommended-latest'],
   jsxA11y.flatConfigs.recommended,
   {
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-compiler': reactCompiler,
-    },
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -26,9 +22,6 @@ export const reactConfig = tseslint.config(
       globals: { ...globals.browser },
     },
     rules: {
-      'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'warn',
-      'react-compiler/react-compiler': 'error',
       'react/prop-types': 'off',
     },
     settings: {
